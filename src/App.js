@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Input from './components/input/Input';
 import Button from './components/button/Button';
@@ -6,7 +5,7 @@ import Form from './components/form/Form';
 import { useState } from 'react';
 function App() {
 
-  const [user, setUser, iki, üc, dört] = useState({ name: '', password: '', RememberMe: 'false' });
+  const [user, setUser] = useState({ name: '', password: '', RememberMe: 'false' });
   const handleChange = (e) => {
     setUser({ ...user, name: e.target.value });
     console.log(user);
@@ -15,6 +14,16 @@ function App() {
     setUser({ ...user, password: e.target.value });
     console.log(user);
   }
+  const LogIn = () => {
+    if (user.name===''){
+      alert('Email is required');
+    }
+    else if(user.password===''){
+      alert('Password is required')
+    }
+    
+
+  }
 
   return (
     <div className="App">
@@ -22,13 +31,17 @@ function App() {
         <h3> Hypance </h3>
       </div>
       <Form >
-        <h1> Log in </h1>
-        <Input type={'email'} value={user.name} placeHolder={'Enter email or username'} onChange={handleChange} />
-        <Input type={'password'} value={user.password} placeHolder={'Enter password'} onChange={handleChange1} />
+        <h1> Log In </h1>
+        <Input type={'email'} required={Input.required} value={user.name} placeHolder={'Enter email or username'} onChange={handleChange} />
+        <Input type={'password'} required={Input.required} value={user.password} placeHolder={'Enter password'} onChange={handleChange1} />
         <div className="cb">
-          <Input type={'checkbox'} value = {'false'} id="topping" name="topping" />Remember Me
+          <Input type={'checkbox'} value={'false'} id="rememberme" name="rememberme" />  Remember me  
         </div>
-        <Button onClick={() => { alert("merhaba") }} />
+        <Button onClick={LogIn} />
+        <div className='links'>
+          <a href="/componentAdi"> Forgot password ? </a>
+          <a href="/componentAdi"> Create a new account </a>
+        </div>
       </Form>
     </div>
   );

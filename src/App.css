@@ -16,5 +16,13 @@
   display: flex;
   box-sizing: border-box;
   margin-inline-start: -100px;
+  font-size: 15px;
+
+}
+
+.links{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;  
 
 }
